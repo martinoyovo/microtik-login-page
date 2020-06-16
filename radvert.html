@@ -1,0 +1,62 @@
+<html>
+<head>
+<meta http-equiv="refresh" content="2; url=$(link-orig)">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />   
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<title>Internet hotspot - Advertisement</title>
+<link rel="stylesheet" href="css/style.css">
+<script>
+
+    var popup = '';
+    function openOrig() {
+	if (window.focus) popup.focus();
+	location.href = unescape('$(link-orig-esc)');
+    }
+    function openAd() {
+	location.href = unescape('$(link-redirect-esc)');
+    }
+    function openAdvert() {
+	if (window.name != 'hotspot_advert') {
+		popup = open('$(link-redirect)', 'hotspot_advert', '');
+		setTimeout("openOrig()", 1000);
+		return;
+	}
+	setTimeout("openAd()", 1000);
+    }
+</script>
+</head>
+<body onLoad="openAdvert()">
+<div class="container">
+    <div class="main">
+        <div style="margin-top: 500px;">
+            <div class="row justify-content-center" >
+                <div class="row pr-3">
+                    <i class="icofont-thumbs-up" style="color: #0c0ce4; font-size: 37px; padding-right: 10px;"></i>
+                    <i class="icofont-thumbs-up" style="color: #0c0ce4; font-size: 37px; padding-right: 10px;"></i>
+                    <i class="icofont-thumbs-up" style="color: #0c0ce4; font-size: 37px; padding-right: 10px;"></i>
+                </div>
+                <br>
+                <h1 style="text-align: center">EVOR !!!!! OLE EKAME</h1>
+                <div class="row pl-4">
+                    <i class="icofont-simple-smile" style="color: yellow; font-size: 37px; padding-left: 10px;"></i>
+                    <i class="icofont-simple-smile" style="color: yellow; font-size: 37px; padding-left: 10px;"></i>
+                    <i class="icofont-simple-smile" style="color: yellow; font-size: 37px; padding-left: 10px;"></i>
+                </div>
+            </div>
+            <br>
+            <div class="row justify-content-center">
+                <a href="$(link-redirect)" class="click h4">EYI ZANDE</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>&copy; 2020 - Glink Infomatique. Tout droit réservé</small>
+        <div style="color: white">Contacts : +228 96 21 42 35</div>
+    </div>
+</footer>
+</html>

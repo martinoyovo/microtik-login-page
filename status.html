@@ -1,0 +1,104 @@
+<html>
+<head>
+$(if refresh-timeout)
+<meta http-equiv="refresh" content="$(refresh-timeout-secs)">
+$(endif)
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Glink Informatique - Status</title>
+<link rel="icon" href="imgs/glink.png">
+<link rel="stylesheet" href="css/icofont/icofont.css">
+<link rel="stylesheet" href="css/bootstrap-grid.css">
+<link rel="stylesheet" href="css/bootstrap-reboot.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<link rel="stylesheet" href="css/style.css">
+<script>
+
+$(if advert-pending == 'yes')
+    var popup = '';
+    function focusAdvert() {
+	if (window.focus) popup.focus();
+    }
+    function openAdvert() {
+	popup = open('$(link-advert)', 'hotspot_advert', '');
+	setTimeout("focusAdvert()", 1000);
+    }
+$(endif)
+    function openLogout() {
+	if (window.name != 'hotspot_status') return true;
+        open('$(link-logout)', 'hotspot_logout', 'toolbar=0,location=0,directories=0,status=0,menubars=0,resizable=1,width=280,height=250');
+	window.close();
+	return false;
+    }
+</script>
+    
+</head>
+<body $(if advert-pending =='yes') onLoad="openAdvert()" $(endif)>
+    <div>
+        <div class="row pb-3">
+            <div class="col-4" style="background-color: white;">
+                <img class="img-responsive" src="imgs/glink.png" width="135" height="130">
+            </div>
+            <div class="col-8">
+                <div style=" background-color: #0c0ce4">
+                    $(if login-by == 'trial')
+                        <h3 class="status-header">Bienvenue, utilisateur!</h3>
+                    $(elif login-by != 'mac')
+                        <h3 class="status-header">Bonjour, $(username)!</h3>
+                    $(endif)
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="">
+        <div class="">
+            <div class="offset-md-1 col-md-10">
+                <form class="form-group status" action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <table>
+                        <div class="row">
+                            <div class="col-6 status-item" style="text-align: center">
+                                IP address
+                            </div>
+                            <div class="col-6 status-item" style="text-align: center">
+                                $(ip)
+                            </div>
+                        </div>
+                        <div class="row"><div class="col-6 status-item">Bytes up / down</div><div class="col-6 status-item">$(bytes-in-nice) / $(bytes-out-nice)</div></div>
+                    $(if session-time-left)
+                        <div class="row"><div class="col-6 status-item">Connected / left</div><div class="col-6 status-item">$(uptime) / $(session-time-left)</div></div>
+                    $(else)
+                        <div class="row"><div class="col-6 status-item">Connected</div><div class="col-6 status-item">$(uptime)</div></div>
+                    $(endif)
+                    $(if blocked == 'yes')
+                        <div class="row"><div class="col-6 status-item">Status</div><div class="col-6 status-item">
+                            <a href="$(link-advert)" target="hotspot_advert" class="click">Publicité obligatoire</a></div>
+                        </div>
+                    $(elif refresh-timeout)
+                        <div class="row"><div class="col-6 status-item">Status refresh</div><div class="col-6 status-item">$(refresh-timeout)</div></div>
+                    $(endif)
+                        </table>
+                    $(if login-by-mac != 'yes')
+                    <!-- user manager link. if user manager resides on other router, replace $(hostname) by its address
+                    <button onclick="document.location='http://$(hostname)/user?subs='; return false;">status</button>
+                    <! -- end of user manager link -->
+                    <input type="submit" value="Se déconnecter" class="col-md-12 btn btn-danger mt-2">
+                    $(endif)
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>&copy; 2020 - Glink Infomatique. Tout droit réservé</small>
+        <div style="color: white">Contacts : +228 96 21 42 35</div>
+    </div>
+</footer>
+</html>

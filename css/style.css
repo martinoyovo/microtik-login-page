@@ -1,0 +1,85 @@
+body {
+    font-family: 'GoogleSans';
+}
+
+/* .icon {
+    height: 55px;
+    width: 55px;
+    border-radius: 50%;
+    color: white;
+    background-color: #e30c0c;
+    align-content: center;
+    align-items: center;
+    opacity: 50%;
+    text-align: center;
+} */
+
+#title {
+    color: white;
+    bottom: 0;
+}
+.link {
+    color: white;
+    text-decoration: none;
+}
+.click:hover {
+    color: #e30c0c;
+    text-decoration: none;
+}
+.click {
+    color: #e30c0c;
+    text-decoration: none;
+}
+.link:hover {
+    color: #e30c0c;
+    text-decoration: none;
+}
+.icon {
+    top: 45%;
+    left: 45%;
+    padding-left: 8px;
+    align-items: center;
+    border-radius: 50%;
+    height: 50px;
+    margin-right: 10px;
+    color: #FFFFFF;
+    background-color: #e30c0c;
+    opacity: 90%;
+    font-size: 33px;
+    width: 50px;
+}
+
+.content {
+    padding-bottom: 50px;
+    top: -140px;
+    background-color: white;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-radius: 10px;
+    box-shadow: 0 1px 1px 0 gray;
+}
+.status {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.status-item {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    border: #b4b4b4 solid 1px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.status-header {
+    text-align: center;
+    color: white;
+    background-color: #0c0ce4;
+}
+#sticky-footer {
+    flex-shrink: initial;
+}
+
+@font-face {
+    font-family: GoogleSans;
+    src: url(../fonts/GoogleSans-Regular.ttf);
+}

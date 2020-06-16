@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Glink Informatique</title>
+    <link rel="icon" href="imgs/glink.png">
+    <link rel="stylesheet" href="css/icofont/icofont.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
+</head>
+<body>
+    $(if chap-id)
+    <div class="row justify-content-center">
+        <form name="sendin" action="$(link-login-only)" method="post" style="display:none">
+            <input class="form-group" type="hidden" name="username" />
+            <input class="form-group" type="hidden" name="password" />
+            <input class="form-group" type="hidden" name="dst" value="$(link-orig)" />
+            <input class="form-group" type="hidden" name="popup" value="true" />
+        </form>
+    </div>
+
+    <script src="js/md5.js"></script>
+    <script>
+        function doLogin() {
+            document.sendin.username.value = document.login.username.value;
+            document.sendin.password.value = hexMD5('$(chap-id)' + document.login.password.value + '$(chap-challenge)');
+            document.sendin.submit();
+            return false;
+        }
+
+    </script>
+    $(endif)
+    <div style="overflow: hidden;
+        position: relative;
+        background: #0c0ce4;
+        opacity: 80%;
+        height: 500px;">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xl-8"style="text-align: left;">
+                <div class="row offset-md-1 offset-lg-1 offset-xl-1 mt-md-5 mt-lg-5 mt-xl-5"id="title" >
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-2 col-xl-2" style="background-color: white;">
+                        <img class="img-responsive" src="imgs/glink.png" width="135" height="130">
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-10 col-xl-10">
+                        <h1 style="font-size: 300%; font-weight: bold; margin-left: 20px; margin-top: 15px;">Glink Informatique</h1>
+                        <div style="margin-left: 20px; padding-top: 25px;" class="row">
+                            <a href="" class='link' target="_blank"><i class="icofont-facebook" style="font-size: 30px; padding-right: 19px;"></i></a>
+                            <a href="" class='link' target="_blank"><i class="icofont-whatsapp" style="font-size: 30px; padding-right: 19px;"></i></a>
+                            <a href="" class='link' target="_blank"><i class="icofont-twitter" style="font-size: 30px; padding-right: 19px;"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="">
+                <img class="pt-5 hide-sm" src="imgs/wifi.svg" width="400" height="400" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="card content">
+            <div class="row">
+                <div class="col-sm-12 col-xs-12 col-lg-4 col-md-4">
+                    <h4 style="padding-left: 20px; padding-top: 30px; color: #0c0ce4">Nos prix</h4>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <h6><strong>1 Heure</strong> 100 F</h6>
+                            </li>
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <h6><strong>1 Jour</strong> 300 F</h6>
+                            </li>
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <h6><strong>1 Semaine</strong> 1000 F</h6>
+                            </li>
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <h6><strong>1 Mois</strong> 3000 F</h6>
+                            </li>
+                            <li class=" d-flex justify-content-start align-items-center">
+                                <h6><strong>Liaison spéciale (1 Mois) </strong> 7000 F</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4 pr-5">
+                    <h4 style="padding-left: 20px; padding-bottom: 20px; padding-top: 30px; color: #0c0ce4">Connexion</h4>
+                    <div class="card-body">
+                        <form name="login" action="$(link-login-only)" method="post" $(if chap-id) onSubmit="return doLogin()" $(endif)>
+                            <input type="hidden" name="dst" value="$(link-orig)" />
+                            <input type="hidden" name="popup" value="true" />
+                            <p class="info $(if error)alert$(endif)">
+                                $(if error == "")Svp connectez-vous pour utiliser l'internet$(if trial == 'yes')<br />Pour un essai gratuit, <a href="$(link-login-only)?dst=$(link-orig-esc)&amp;username=T-$(mac-esc)" class="click">cliquez ici</a>.$(endif)
+                                $(endif)
+
+                                $(if error)$(error)$(endif)
+                            </p>
+                            <div class="form-group pb-3">
+                                <input type="text" value="$(username)" name="username" class="form-control" id="id" placeholder="Identifiant" aria-label="">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                            </div>
+                            <input type="checkbox" onclick="myFunction()" class="mr-2">Afficher le mot de passe
+                            <input type="submit" class="col-md-12 btn btn-danger mt-5" value="Se connecter">
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12 col-lg-4">
+                    <h4 style="padding-left: 20px;
+                    padding-bottom: 20px;
+                    padding-top: 30px;
+                    color: #0c0ce4;">Nos services</h4>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <div class="icon">
+                                    <i class="icofont-computer"></i>
+                                </div>
+                                <h6>Vente de matériels <br>informatiques</h6>
+                            </li>
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <div class="icon">
+                                    <i class="icofont-wifi-router"></i>
+                                </div>
+                                <h6>Réseaux <br>informatiques</h6>
+                            </li>
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <div class="icon">
+                                    <i class="icofont-server"></i>
+                                </div>
+                                <h6>Administration <br>système</h6>
+                            </li>
+                            <li class="pb-4 d-flex justify-content-start align-items-center">
+                                <div class="icon">
+                                    <i class="icofont-tools-alt-2"></i>
+                                </div>
+                                <h6>Maintenance <br>informatique</h6>
+                            </li>
+                            <li class=" d-flex justify-content-start align-items-center">
+                                <div class="icon">
+                                    <i class="icofont-wechat"></i>
+                                </div>
+                                <h6>Conseils & assistance</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>&copy; 2020 - Glink Infomatique. Tout droit réservé</small>
+        <div style="color: white">Contacts : +228 96 21 42 35</div>
+    </div>
+</footer>
+</html>

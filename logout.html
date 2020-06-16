@@ -1,0 +1,85 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Glink Informatique - Déconnexion</title>
+<link rel="icon" href="imgs/glink.png">
+<link rel="stylesheet" href="css/icofont/icofont.css">
+<link rel="stylesheet" href="css/bootstrap-grid.css">
+<link rel="stylesheet" href="css/bootstrap-reboot.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="js/bootstrap.bundle.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/main.js"></script>
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="expires" content="-1">
+<link rel="stylesheet" href="css/style.css">
+<script>
+    function openLogin() {
+	if (window.name != 'hotspot_logout') return true;
+	open('$(link-login)', '_blank', '');
+	window.close();
+	return false;
+    }
+</script>
+</head>
+
+<body>
+    <div class="row pb-3 " style="height: 200px">
+        <div style="padding-top: 50px; background-color: #0c0ce4; opacity: 90%" class="col-12 status-header" style="height: 100px; margin: 20px;">
+            <h3 class="">Vous venez juste de vous déconnecter !</h3>
+        </div>
+    </div>
+    <br>
+    <div class="">
+        <div class="">
+            <div class="offset-md-1 col-md-10">
+                <form class="form-group status" action="$(link-logout)" name="logout" onSubmit="return openLogout()">
+                    <table>
+                        <div class="row">
+                            <div class="col-6 status-item" style="text-align: center">
+                                Nom d'utilisateur
+                            </div>
+                            <div class="col-6 status-item" style="text-align: center">
+                                $(username)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 status-item">Adresse IP</div>
+                            <div class="col-6 status-item">$(ip)</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 status-item">Adresse MAC</div>
+                            <div class="col-6 status-item">$(mac)</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 status-item">Temps acheté</div>
+                            <div class="col-6 status-item">$(uptime)</div>
+                        </div>
+                        $(if session-time-left)
+                            <div class="row">
+                                <div class="col-6 status-item">Temps écoulé</div>
+                                <div class="col-6 status-item">$(session-time-left)</div>
+                            </div>
+                        $(endif)
+                            <div class="row">
+                                <div class="col-6 status-item">Bytes haut / bas:</div>
+                                <div class="col-6 status-item">$(bytes-in-nice) / $(bytes-out-nice)</div>
+                            </div>
+                    </table>
+                    <form action="$(link-login)" name="login" onSubmit="return openLogin()">
+                    <input type="submit" value="Se connecter" class="col-md-12 btn btn-danger mt-5">
+                    </form>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+    <div class="container text-center">
+        <small>&copy; 2020 - Glink Infomatique. Tout droit réservé</small>
+        <div style="color: white">Contacts : +228 96 21 42 35</div>
+    </div>
+</footer>
+</html>
